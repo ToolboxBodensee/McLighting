@@ -1268,22 +1268,9 @@ void checkForRequests() {
       if ((prevKeyState == HIGH) && (currKeyState == LOW)) {
         // key goes from not pressed to pressed
         KeyPressCount = 0;
-      }
-      else if ((prevKeyState == LOW) && (currKeyState == HIGH)) {
-        if (KeyPressCount < longKeyPressCountMax && KeyPressCount >= mediumKeyPressCountMin) {
-          mediumKeyPress();
-        }
-        else {
-          if (KeyPressCount < mediumKeyPressCountMin) {
-            shortKeyPress();
-          }
-        }
-      }
-      else if (currKeyState == LOW) {
-        KeyPressCount++;
-        if (KeyPressCount >= longKeyPressCountMax) {
-          longKeyPress();
-        }
+        strip->setBrightness(0);
+      } else if ((prevKeyState == LOW) && (currKeyState == HIGH)) {
+        strip->setBrightness(brightness);
       }
       prevKeyState = currKeyState;
     }
