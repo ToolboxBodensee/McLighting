@@ -141,7 +141,7 @@ void initDMA(uint16_t stripSize = NUMLEDS){
 void DMA_Show(void) {
   if(dma->IsReadyToUpdate()) {
     memcpy(dma->getPixels(), strip->getPixels(), dma->getPixelsSize());
-    dma->Update();
+    dma->Update(true);
   }
 }
 #endif
